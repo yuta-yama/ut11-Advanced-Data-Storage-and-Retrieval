@@ -65,14 +65,12 @@ def precipitation():
     order_by(Measurement.date).all()
 
     precip_list = []
-    counter = 0
 
     for p in precip:
         precip_dict = {}
-        precip_dict["date"] = precip[counter][0]
-        precip_dict["prcp"] = precip[counter][1]
+        precip_dict["date"] = p.date
+        precip_dict["prcp"] = p.prcp
         precip_list.append(precip_dict)
-        counter += 1
 
     return jsonify(precip_list)
 
@@ -100,14 +98,12 @@ def tobs():
     order_by(Measurement.date).all()
     
     tobs_list = []
-    counter = 0
-    
+
     for t in tobs:
         tobs_dict = {}
-        tobs_dict["date"] = tobs[counter][0]
-        tobs_dict["tobs"] = tobs[counter][1]
+        tobs_dict["date"] = t.date
+        tobs_dict["tobs"] = t.tobs
         tobs_list.append(tobs_dict)
-        counter += 1
 
     return jsonify(tobs_list)
 
